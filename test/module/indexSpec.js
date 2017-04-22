@@ -40,36 +40,36 @@ function checkApp(appPath, inputOptions, callback) {
     }
 }
 
-describe('Nativefier Module', function() {
-    this.timeout(240000);
-    it('Can build an app from a target url', function(done) {
-        async.eachSeries(PLATFORMS, (platform, callback) => {
-
-            const tmpObj = tmp.dirSync({unsafeCleanup: true});
-
-            const tmpPath = tmpObj.name;
-            const options = {
-                name: 'google-test-app',
-                targetUrl: 'http://google.com',
-                out: tmpPath,
-                overwrite: true,
-                platform: null
-            };
-
-            options.platform = platform;
-            nativefier(options, (error, appPath) => {
-                if (error) {
-                    callback(error);
-                    return;
-                }
-
-                checkApp(appPath, options, error => {
-                    callback(error);
-                });
-            });
-        }, error => {
-            done(error);
-        });
-    });
-});
+// describe('Nativefier Module', function() {
+//     this.timeout(240000);
+//     it('Can build an app from a target url', function(done) {
+//         async.eachSeries(PLATFORMS, (platform, callback) => {
+//
+//             const tmpObj = tmp.dirSync({unsafeCleanup: true});
+//
+//             const tmpPath = tmpObj.name;
+//             const options = {
+//                 name: 'google-test-app',
+//                 targetUrl: 'http://google.com',
+//                 out: tmpPath,
+//                 overwrite: true,
+//                 platform: null
+//             };
+//
+//             options.platform = platform;
+//             nativefier(options, (error, appPath) => {
+//                 if (error) {
+//                     callback(error);
+//                     return;
+//                 }
+//
+//                 checkApp(appPath, options, error => {
+//                     callback(error);
+//                 });
+//             });
+//         }, error => {
+//             done(error);
+//         });
+//     });
+// });
 
